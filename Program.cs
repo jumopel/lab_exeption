@@ -6,10 +6,16 @@ namespace lab_exeption
 {
     internal class Program
     {
-
+        private List<int> products;
+        public Program()
+        {
+            products = new List<int>();
+        }
         static void Main(string[] args)
         {
-           
+            Program p = new Program();
+            p.ReadeFile();
+            p.Averege();
 
         }
         public void ReadeFile()
@@ -17,7 +23,6 @@ namespace lab_exeption
             List<string> noFile = new();
             List<string> badData = new();
             List<string> overflow = new();
-            List<int> products = new();
             for (int i = 10; i <= 29; i++)
             {
                 try
@@ -53,7 +58,21 @@ namespace lab_exeption
                 {
                     overflow.Add($"{i}.txt");
                 }
-
+                File.WriteAllLines("no_file.txt", noFile);
+                File.WriteAllLines("bad_data.txt", badData);
+                File.WriteAllLines("overflow.txt", overflow);
+            }
+            
+        }
+        public void Averege()
+        {
+            try
+            {
+                double ave = products.Average();
+            }
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine("There are no numbers to calculate the average.");
             }
         }
     }
