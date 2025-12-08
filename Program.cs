@@ -58,9 +58,16 @@ namespace lab_exeption
                 {
                     overflow.Add($"{i}.txt");
                 }
-                File.WriteAllLines("no_file.txt", noFile);
-                File.WriteAllLines("bad_data.txt", badData);
-                File.WriteAllLines("overflow.txt", overflow);
+                try
+                {
+                    File.WriteAllLines("no_file.txt", noFile);
+                    File.WriteAllLines("bad_data.txt", badData);
+                    File.WriteAllLines("overflow.txt", overflow);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred while writing to the log files: {ex.Message}");
+                }
             }
             
         }
@@ -75,5 +82,6 @@ namespace lab_exeption
                 Console.WriteLine("There are no numbers to calculate the average.");
             }
         }
+
     }
 }
