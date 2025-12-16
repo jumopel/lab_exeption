@@ -59,6 +59,10 @@ namespace lab_exeption
                 {
                     overflow.Add($"{i}.txt");
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An unexpected error occurred while processing {i}.txt: {ex.Message}");
+                }
                 try
                 {
                     File.WriteAllLines("no_file.txt", noFile);
