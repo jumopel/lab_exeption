@@ -17,6 +17,7 @@ namespace lab_exeption
             Program p = new Program();
             p.ReadeFile();
             p.Averege();
+            
 
         }
         public void ReadeFile()
@@ -63,29 +64,29 @@ namespace lab_exeption
                 {
                     Console.WriteLine($"An unexpected error occurred while processing {i}.txt: {ex.Message}");
                 }
-                try
-                {
-                    File.WriteAllLines("no_file.txt", noFile);
-                    File.WriteAllLines("bad_data.txt", badData);
-                    File.WriteAllLines("overflow.txt", overflow);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"An error occurred while writing to the log files: {ex.Message}");
-                }
             }
-            
+            try
+            {
+                File.WriteAllLines("no_file.txt", noFile);
+                File.WriteAllLines("bad_data.txt", badData);
+                File.WriteAllLines("overflow.txt", overflow);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while writing to the log files: {ex.Message}");
+            }
         }
         public void Averege()
         {
             try
             {
-                double ave = products.Average();
+                Console.WriteLine(products.Average());
             }
             catch (InvalidOperationException)
             {
                 Console.WriteLine("There are no numbers to calculate the average.");
             }
+
         }
 
     }
